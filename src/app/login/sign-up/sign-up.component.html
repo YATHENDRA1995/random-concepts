@@ -1,0 +1,34 @@
+<!-- Model Driven Form (Sign Up Form) -->
+<form novalidate [formGroup]="myform" (ngSubmit)="signUpSubmit()">
+  <div class="form-group">
+    <label>User Name</label>
+    <input type="text" class="form-control" placeholder="Enter User Name" formControlName="userName" [ngClass]="{
+        'has-danger': userName?.invalid && (userName?.dirty || userName?.touched)
+      }">
+    <div class="form-control-feedback" *ngIf="userName.errors && (userName?.dirty || userName?.touched)">
+      User Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="text" class="form-control" placeholder="Enter Password" formControlName="password" [ngClass]="{
+        'has-danger': password?.invalid && (password?.dirty || password?.touched)
+      }">
+    <div class="form-control-feedback" *ngIf="password.invalid && (password?.dirty || password?.touched)">
+      Password is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" placeholder="Enter Email" formControlName="email" [ngClass]="{
+        'has-danger': email?.invalid && (email?.dirty || email?.touched)
+      }">
+    <div class="form-control-feedback" *ngIf="email.invalid && (email?.dirty || email?.touched)">
+      <p *ngIf="email.errors.required">Email is required</p>
+      <p *ngIf="email.errors.pattern">Email Address must contain @  character</p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Sign Up</button>
+  <!-- <button type="reset" class="btn btn-secondary ml-2">Reset</button> -->
+  <button class="btn btn-secondary ml-2" (click)="goToLogin()">Back</button>
+</form>

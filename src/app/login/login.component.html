@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card mt-4">
+      <div class="card-header text-center">
+        <h3>{{ !isSignUp? 'Login' : 'Sign Up' }}</h3>
+      </div>
+      <div class="card-body">
+        <ng-container *ngIf="!isSignUp; else signUpForm">
+          <app-user-login (loginFormToggle)="toggleComp($event)" (loginFormData)="login($event)"></app-user-login>
+        </ng-container>
+        <ng-template #signUpForm>
+          <app-sign-up (signUpToggle)="toggleComp($event)"></app-sign-up>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="col-4"></div>
+</div>

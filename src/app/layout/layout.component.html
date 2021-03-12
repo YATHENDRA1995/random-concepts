@@ -1,0 +1,75 @@
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header text-center">
+        CanDeactivate Test
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <input type="checkbox" class="form-control col-2" [(ngModel)]="isChecked" (ngModelChange)="checkChange()">
+          <label class="col-10 pl-0 pt-1">Please Check it to route to other page</label>
+        </div>
+        <div class="pt-4">
+          <button class="btn btn-primary" (click)="backToLogin()">Back To Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header text-center">
+        Life Cycle Hooks
+      </div>
+      <div class="card-body">
+        <p *ngIf="lifeCycleHooks.onChanges">{{ lifeCycleHooks.onChanges }}</p>
+        <p *ngIf="lifeCycleHooks.onInit">{{ lifeCycleHooks.onInit }}</p>
+        <p *ngIf="lifeCycleHooks.doCheck">{{ lifeCycleHooks.doCheck }}</p>
+        <p *ngIf="lifeCycleHooks.afterContentInit">{{ lifeCycleHooks.afterContentInit }}</p>
+        <p *ngIf="lifeCycleHooks.afterContentChecked">{{ lifeCycleHooks.afterContentChecked }}</p>
+        <p *ngIf="lifeCycleHooks.afterViewInit">{{ lifeCycleHooks.afterViewInit }}</p>
+        <p *ngIf="lifeCycleHooks.afterViewChecked">{{ lifeCycleHooks.afterViewChecked }}</p>
+        <p *ngIf="lifeCycleHooks.afterDestroy">{{ lifeCycleHooks.afterDestroy }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header text-center">
+        ngFor performance Tracking
+      </div>
+      <div class="card-body">
+        <button class="btn btn-primary" (click)="addInput()">Add</button>
+        <div class="pt-4" *ngFor="let data of ngForPerf; let i = index;trackBy: trackByFn">
+          <input type="text" class="form-control" [(ngModel)]="ngForPerf[i]">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header text-center">
+        Custom Color Directive
+      </div>
+      <div class="card-body">
+        <p myCustom>I'm custom directive</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header text-center">
+        API Service Call
+      </div>
+      <div class="card-body">
+        <input type="number" class="form-control" [(ngModel)]="api['number']">
+        <div class="pt-2">
+          <button class="btn btn-primary" (click)="fetchNumDetails()">Fetch</button>
+        </div>
+        <p class="lead pt-1" *ngIf="api['data']">{{ api['data'] }} fdsaf</p>
+      </div>
+    </div>
+  </div>
+</div>
